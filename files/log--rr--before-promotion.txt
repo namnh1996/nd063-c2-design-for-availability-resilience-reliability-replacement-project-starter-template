@@ -1,0 +1,37 @@
+[ec2-user@ip-10-2-10-245 ~]$ mysql -h primary-idb-replica.cbbqzmapm8bt.us-west-2.rds.amazonaws.com -P 3306 -u admin -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 28
+Server version: 8.0.33 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> USE udacity;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [udacity]> INSERT INTO Students (FirstName, LastName, EnrollmentDate)
+    -> VALUES ('John', 'Doe', '2023-10-01'),
+    ->        ('Jane', 'Smith', '2023-10-02');
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+MySQL [udacity]> SELECT * FROM Students;
++-----------+-----------+----------+----------------+
+| StudentID | FirstName | LastName | EnrollmentDate |
++-----------+-----------+----------+----------------+
+|         1 | John      | Doe      | 2023-10-01     |
+|         2 | Jane      | Smith    | 2023-10-02     |
+|         3 | John      | Doe      | 2023-10-01     |
+|         4 | Jane      | Smith    | 2023-10-02     |
+|         5 | John      | Doe      | 2023-10-01     |
+|         6 | Jane      | Smith    | 2023-10-02     |
+|         7 | John      | Doe      | 2023-10-01     |
+|         8 | Jane      | Smith    | 2023-10-02     |
+|         9 | John      | Doe      | 2023-10-01     |
+|        10 | Jane      | Smith    | 2023-10-02     |
++-----------+-----------+----------+----------------+
+10 rows in set (0.002 sec)
+
+MySQL [udacity]> 

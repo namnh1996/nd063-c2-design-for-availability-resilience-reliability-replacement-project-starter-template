@@ -1,0 +1,25 @@
+Write a paragraph or two describing the achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database in terms of:
+
+1. Minimum RTO for a single AZ outage
+    - When the configuration is seted up:
+        - Problem happens will take 1 minute
+        - Raise alerts will take 5 minutes
+        - Automatically switch to the second availability zone will tack 1 minute
+    Total will take under 10 minutes
+
+2. Minimum RTO for a single region outage
+    - If there is a complete region outage, where all AZs in a region become unavailable, the RTO is typically higher compared to a single AZ outage
+        - Problem happens will take 1 minute
+        - Time passes before an alert triggers will take 5 minutes
+        - Alert triggers on-all staff will take 1 minute
+        - On-call staff detect  will take 20 minutes
+        - Root cause is discovered will take 10 minutes
+        - Remediation started will take 10 minutes
+        - Issue fixed will take 5 minutes
+    Total will take under 55 minutes
+
+3. Minimum RPO for a single AZ outage
+    - It take 5 minutes to fail, then the data will be lost
+
+4. Minimum RPO for a single region outage
+    - In the case of a complete region outage, the RPO can be slightly higher compared to a single AZ outage. Minimun RPO will be 4 hours
